@@ -8,6 +8,7 @@ public class UserInterface {
     private ArrayList<Product> products = new ArrayList<>();
     private double totalPrice = 0.0;
     private Scanner scanner = new Scanner(System.in);
+    private ReceiptManager receiptManager = new ReceiptManager();
 
     public void startMenu() {
         boolean exitApplication = false;
@@ -90,6 +91,8 @@ public class UserInterface {
             System.out.println(product);
         }
         System.out.printf("Total Price: $%.2f%n", totalPrice);
+
+        receiptManager.writeReceipt(products, totalPrice);
 
     }
 }
