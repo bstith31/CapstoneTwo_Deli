@@ -1,0 +1,6 @@
+Order Receipt
+==============
+Sandwich - 12 inches, white, Meats: steak, Cheeses: american, Toppings: lettuce, Sauces: mayo, Toasted: yes, Price: $10.25
+Sandwich - 8 inches, wheat, Meats: salami, Cheeses: cheddar, Toppings: onion, Sauces: ranch, Toasted: no, Price: $8.75
+--------------
+Total Price: $19.00

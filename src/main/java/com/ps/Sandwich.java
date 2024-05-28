@@ -7,12 +7,11 @@ public class Sandwich extends Product {
 
     private String bread;
     private int size;
-    private String meat;
-    private String cheese;
+    private String[] meats;
+    private String[] cheeses;
     private String[] otherToppings;
     private String[] sauces;
     private boolean toasted;
-
 
     public Sandwich(String name, double price) {
         super(name, price);
@@ -20,7 +19,6 @@ public class Sandwich extends Product {
 
     @Override
     public void productSelection() {
-
         Scanner scanner = new Scanner(System.in);
 
         // Bread options
@@ -40,20 +38,21 @@ public class Sandwich extends Product {
         size = sizes[scanner.nextInt() - 1];
 
         // Meat options
-        String[] meats = {"steak", "ham", "salami", "roast beef", "chicken", "bacon"};
-        System.out.println("Select meat:");
-        for (int i = 0; i < meats.length; i++) {
-            System.out.printf("%d. %s%n", i + 1, meats[i]);
+        String[] possibleMeats = {"steak", "ham", "salami", "roast beef", "chicken", "bacon"};
+        System.out.println("Select meats:");
+        for (int i = 0; i < possibleMeats.length; i++) {
+            System.out.printf("%d. %s%n", i + 1, possibleMeats[i]);
         }
-        meat = meats[scanner.nextInt() - 1];
+        scanner.nextLine();
+        meats = getSelectedItems(scanner.nextLine(), possibleMeats);
 
         // Cheese options
-        String[] cheeses = {"american", "provolone", "cheddar", "swiss"};
-        System.out.println("Select cheese:");
-        for (int i = 0; i < cheeses.length; i++) {
-            System.out.printf("%d. %s%n", i + 1, cheeses[i]);
+        String[] possibleCheeses = {"american", "provolone", "cheddar", "swiss"};
+        System.out.println("Select cheeses:");
+        for (int i = 0; i < possibleCheeses.length; i++) {
+            System.out.printf("%d. %s%n", i + 1, possibleCheeses[i]);
         }
-        cheese = cheeses[scanner.nextInt() - 1];
+        cheeses = getSelectedItems(scanner.nextLine(), possibleCheeses);
 
         // Other toppings
         String[] possibleToppings = {"lettuce", "tomato", "onion", "pickle", "olives"};
@@ -61,11 +60,7 @@ public class Sandwich extends Product {
         for (int i = 0; i < possibleToppings.length; i++) {
             System.out.printf("%d. %s%n", i + 1, possibleToppings[i]);
         }
-        String[] toppingIndices = scanner.next().split(",");
-        otherToppings = new String[toppingIndices.length];
-        for (int i = 0; i < toppingIndices.length; i++) {
-            otherToppings[i] = possibleToppings[Integer.parseInt(toppingIndices[i]) - 1];
-        }
+        otherToppings = getSelectedItems(scanner.nextLine(), possibleToppings);
 
         // Sauces
         String[] possibleSauces = {"mayo", "mustard", "ketchup", "ranch", "BBQ"};
@@ -73,17 +68,22 @@ public class Sandwich extends Product {
         for (int i = 0; i < possibleSauces.length; i++) {
             System.out.printf("%d. %s%n", i + 1, possibleSauces[i]);
         }
-        String[] sauceIndices = scanner.next().split(",");
-        sauces = new String[sauceIndices.length];
-        for (int i = 0; i < sauceIndices.length; i++) {
-            sauces[i] = possibleSauces[Integer.parseInt(sauceIndices[i]) - 1];
-        }
+        sauces = getSelectedItems(scanner.nextLine(), possibleSauces);
 
         // Toasted
         System.out.print("Would you like the sandwich toasted? (1 for yes, 2 for no): ");
         toasted = scanner.nextInt() == 1;
 
         calculatePrice();
+    }
+
+    private String[] getSelectedItems(String input, String[] options) {
+        String[] indices = input.split(",");
+        String[] selectedItems = new String[indices.length];
+        for (int i = 0; i < indices.length; i++) {
+            selectedItems[i] = options[Integer.parseInt(indices[i].trim()) - 1];
+        }
+        return selectedItems;
     }
 
     private void calculatePrice() {
@@ -94,18 +94,18 @@ public class Sandwich extends Product {
         switch (size) {
             case 4:
                 sizePrice = 5.50;
-                meatPrice = 1.00;
-                cheesePrice = 0.75;
+                meatPrice = 1.00 * meats.length;
+                cheesePrice = 0.75 * cheeses.length;
                 break;
             case 8:
                 sizePrice = 7.00;
-                meatPrice = 2.00;
-                cheesePrice = 1.50;
+                meatPrice = 2.00 * meats.length;
+                cheesePrice = 1.50 * cheeses.length;
                 break;
             case 12:
                 sizePrice = 8.50;
-                meatPrice = 3.00;
-                cheesePrice = 2.25;
+                meatPrice = 3.00 * meats.length;
+                cheesePrice = 2.25 * cheeses.length;
                 break;
             default:
                 throw new IllegalArgumentException("Invalid sandwich size");
@@ -116,7 +116,7 @@ public class Sandwich extends Product {
 
     @Override
     public String toString() {
-        return String.format("Sandwich - %d inches, %s, Meat: %s, Cheese: %s, Toppings: %s, Sauces: %s, Toasted: %s, Price: $%.2f",
-                size, bread, meat, cheese, String.join(", ", otherToppings), String.join(", ", sauces), toasted ? "yes" : "no", price);
+        return String.format("Sandwich - %d inches, %s, Meats: %s, Cheeses: %s, Toppings: %s, Sauces: %s, Toasted: %s, Price: $%.2f",
+                size, bread, String.join(", ", meats), String.join(", ", cheeses), String.join(", ", otherToppings), String.join(", ", sauces), toasted ? "yes" : "no", price);
     }
 }

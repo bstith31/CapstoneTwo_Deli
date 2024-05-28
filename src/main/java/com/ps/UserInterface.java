@@ -92,7 +92,7 @@ public class UserInterface {
         }
         System.out.printf("Total Price: $%.2f%n", totalPrice);
 
-        receiptManager.writeReceipt(products, totalPrice);
 
+        receiptManager.writeReceipt(products, totalPrice);
     }
 }
