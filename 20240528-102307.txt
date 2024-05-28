@@ -1,0 +1,7 @@
+Order Receipt
+==============
+Sandwich - 4 inches, white, Meat: steak, Cheese: american, Toppings: lettuce, Sauces: mayo, Toasted: yes, Price: $7.25
+Drink - medium, Price: $2.50
+Chips - barbecue, Price: $1.50
+--------------
+Total Price: $11.25
