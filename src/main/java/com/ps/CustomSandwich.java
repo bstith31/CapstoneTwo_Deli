@@ -4,7 +4,7 @@ public class CustomSandwich extends Sandwich {
 
     public static final String BLT = "BLT";
     public static final String PHILLY_CHEESE_STEAK = "Philly Cheese Steak";
-    public static final String HOBBS_TURKEY_SANDWICH = "Hobbs Turkey Sandwich";
+
 
     public CustomSandwich(String name, double price, String bread, int size, String[] meats,
                           String[] cheeses, String[] otherToppings, String[] sauces, boolean toasted) {
@@ -47,19 +47,6 @@ public class CustomSandwich extends Sandwich {
         );
     }
 
-        public static CustomSandwich createHobbsTurkeySandwich() {
-            return new CustomSandwich(
-                    HOBBS_TURKEY_SANDWICH,
-                    0.0,
-                    "white",
-                    8,
-                    new String[]{"turkey"},
-                    new String[]{"provolone"},
-                    new String[]{"peppers"},
-                    new String[]{"mayo"},
-                    true
-            );
-    }
 
     @Override
     public void productSelection() {

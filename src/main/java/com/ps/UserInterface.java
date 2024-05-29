@@ -111,7 +111,6 @@ public class UserInterface {
                 Select a Signature Sandwich:
                 1. BLT
                 2. Philly Cheese Steak
-                3. Hobbs Turkey Sandwich
                 Please choose an option:
                 """);
 
@@ -123,8 +122,6 @@ public class UserInterface {
             case 2:
                 addProduct(CustomSandwich.createPhillyCheeseSteak());
                 break;
-            case 3:
-                addProduct(CustomSandwich.createHobbsTurkeySandwich());
             default:
                 System.out.println("Invalid choice, please try again.");
                 break;
