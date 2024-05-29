@@ -132,6 +132,7 @@ public class Sandwich extends Product {
         setToasted(scanner.nextInt() == 1);
 
         calculatePrice();
+        displaySandwichArt();
     }
 
     private String[] getSelectedItems(String input, String[] options) {
@@ -169,6 +170,10 @@ public class Sandwich extends Product {
         }
 
         price = sizePrice + meatPrice + cheesePrice;
+    }
+
+    private void displaySandwichArt() {
+
     }
 
 

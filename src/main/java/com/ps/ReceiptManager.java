@@ -47,4 +47,10 @@ public class ReceiptManager {
             System.err.println("Error writing receipt: " + e.getMessage());
         }
     }
+
+    public void printAllReceipts(List<Order> orders) {
+        for (Order order : orders) {
+            System.out.println(order);
+        }
+    }
 }
