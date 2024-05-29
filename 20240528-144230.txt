@@ -1,0 +1,3 @@
+Order Receipt
+==============
+Sandwich - 4 inches, white, Meats: steak, Cheeses: american, Toppings: lettuce, Sauces: mayo, Toasted: yes, Price: $7.25

@@ -12,11 +12,24 @@ public class ReceiptManager {
     public void writeReceipt(List<Product> products, double totalPrice) {
         DateTimeFormatter formatter = DateTimeFormatter.ofPattern("yyyyMMdd-HHmmss");
         String timestamp = LocalDateTime.now().format(formatter);
+        LocalDateTime currentDateTime = LocalDateTime.now(); // Get current date and time
+        writeReceipt(products, totalPrice, currentDateTime); // Call the overloaded method with current date and time
+    }
+
+    public void writeReceipt(List<Product> products, double totalPrice, LocalDateTime scheduledDateTime) {
+        DateTimeFormatter formatter = DateTimeFormatter.ofPattern("yyyyMMdd-HHmmss");
+        String timestamp = scheduledDateTime.format(formatter);
         String filename = timestamp + ".txt";
 
         try (BufferedWriter bufwriter = new BufferedWriter(new FileWriter(filename))) {
-            bufwriter.write("Order Receipt\n");
-            bufwriter.write("==============\n");
+            if (scheduledDateTime.equals(LocalDateTime.now())) {
+                bufwriter.write("Order Receipt\n");
+                bufwriter.write("==============\n");
+            } else {
+                bufwriter.write("Scheduled Order Receipt\n");
+                bufwriter.write("========================\n");
+                bufwriter.write("Scheduled Date and Time: " + scheduledDateTime.format(DateTimeFormatter.ofPattern("yyyy-MM-dd HH:mm")) + "\n\n");
+            }
 
             for (Product product : products) {
                 bufwriter.write(product.toString() + "\n");
@@ -24,7 +37,12 @@ public class ReceiptManager {
 
             bufwriter.write("--------------\n");
             bufwriter.write(String.format("Total Price: $%.2f\n", totalPrice));
-            System.out.println("Receipt written to " + filename);
+            if (scheduledDateTime.equals(LocalDateTime.now())) {
+                System.out.println("Receipt written to " + filename);
+            } else {
+                System.out.println("Receipt for scheduled order written to " + filename);
+            }
+            bufwriter.flush(); // Flush the buffer to ensure content is written to the file
         } catch (IOException e) {
             System.err.println("Error writing receipt: " + e.getMessage());
         }
