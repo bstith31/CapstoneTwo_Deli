@@ -60,75 +60,70 @@ public class UserInterface {
     }
 
     private void startOrder() {
-
         boolean cancelOrder = false;
 
         while (!cancelOrder) {
-            if (adminMode) {
+            if (!adminMode) { // Display regular order options only if not in admin mode
                 System.out.println("""
-                        1. Print All Receipts
-                        2. Exit Admin Mode
-                        Please choose an option:
-                        """);
-
-                int adminChoice = scanner.nextInt();
-
-                switch (adminChoice) {
-                    case 1:
-                        receiptManager.printAllReceipts(scheduledOrders);
-                        break;
-                    case 2:
-                        exitAdminMode();
-                        break;
-                    default:
-                        System.out.println("Invalid choice, please try again.");
-                        break;
-                }
+                1. Add a Custom Sandwich
+                2. Add a Signature Sandwich
+                3. Add a Drink
+                4. Add Chips
+                5. Checkout
+                6. Cancel Order
+                Please choose an option:
+                """);
             } else {
                 System.out.println("""
-                        1. Add a Custom Sandwich
-                        2. Add a Signature Sandwich
-                        3. Add a Drink
-                        4. Add Chips
-                        5. Checkout
-                        6. Cancel Order
-                        Please choose an option:
-                        """);
+                Admin Mode Menu:
+                1. Print All Receipts
+                2. Exit Admin Mode
+                Please choose an option:
+                """);
+            }
 
-                int userChoice = scanner.nextInt();
+            int userChoice = scanner.nextInt();
 
-                if (!adminMode && (userChoice == 1 || userChoice == 2 || userChoice == 3 || userChoice == 4)) {
-                    System.out.println("Invalid Choice, please choose again");
-                    continue;
-                }
+            if (!adminMode && (userChoice < 1 || userChoice > 6)) {
+                System.out.println("Invalid choice, please try again.");
+                continue;
+            }
 
-                switch (userChoice) {
-                    case 1:
-                        addProduct(new Sandwich("Custom Sandwich", 0.0));
-                        break;
-                    case 2:
-                        selectSignatureSandwich();
-                        break;
-                    case 3:
-                        addProduct(new Drink("Custom Drink", 0.0));
-                        break;
-                    case 4:
-                        addProduct(new Chips("Custom Chips", 0.0));
-                        break;
-                    case 5:
-                        checkout();
-                        return;
-                    case 6:
-                        System.out.println("Order cancelled.");
-                        cancelOrder = true;
-                        break;
-                    default:
+            switch (userChoice) {
+                case 1:
+                    addProduct(new Sandwich("Custom Sandwich", 0.0));
+                    break;
+                case 2:
+                    selectSignatureSandwich();
+                    break;
+                case 3:
+                    addProduct(new Drink("Custom Drink", 0.0));
+                    break;
+                case 4:
+                    addProduct(new Chips("Custom Chips", 0.0));
+                    break;
+                case 5:
+                    checkout();
+                    return;
+                case 6:
+                    System.out.println("Order cancelled.");
+                    cancelOrder = true;
+                    break;
+                case 7: // For admin mode, if necessary
+                    if (adminMode) {
+                        exitAdminMode();
+                        return; // Return to the main menu
+                    } else {
                         System.out.println("Invalid choice, please try again.");
                         break;
-                }
+                    }
+                default:
+                    System.out.println("Invalid choice, please try again.");
+                    break;
             }
         }
     }
+
 
     private void selectSignatureSandwich() {
         System.out.println("""

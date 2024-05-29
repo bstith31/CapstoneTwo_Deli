@@ -1,0 +1,7 @@
+Scheduled Order Receipt
+========================
+Scheduled Date and Time: 2024-05-29 16:01
+
+Sandwich - 8 inches, white, Meats: bacon, Cheeses: cheddar, Toppings: lettuce, tomato, Sauces: ranch, Toasted: yes, Price: $10.50
+--------------
+Total Price: $10.50

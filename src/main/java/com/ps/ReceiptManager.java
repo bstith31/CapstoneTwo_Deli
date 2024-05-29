@@ -9,9 +9,9 @@ import java.util.List;
 
 public class ReceiptManager {
 
+    private static final String RECEIPTS = "receipts/";
+
     public void writeReceipt(List<Product> products, double totalPrice) {
-        DateTimeFormatter formatter = DateTimeFormatter.ofPattern("yyyyMMdd-HHmmss");
-        String timestamp = LocalDateTime.now().format(formatter);
         LocalDateTime currentDateTime = LocalDateTime.now();
         writeReceipt(products, totalPrice, currentDateTime);
     }
@@ -19,7 +19,7 @@ public class ReceiptManager {
     public void writeReceipt(List<Product> products, double totalPrice, LocalDateTime scheduledDateTime) {
         DateTimeFormatter formatter = DateTimeFormatter.ofPattern("yyyyMMdd-HHmmss");
         String timestamp = scheduledDateTime.format(formatter);
-        String filename = timestamp + ".txt";
+        String filename = RECEIPTS + timestamp + ".txt";
 
         try (BufferedWriter bufwriter = new BufferedWriter(new FileWriter(filename))) {
             if (scheduledDateTime.equals(LocalDateTime.now())) {
