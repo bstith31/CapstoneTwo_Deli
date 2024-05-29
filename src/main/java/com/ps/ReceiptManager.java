@@ -12,8 +12,8 @@ public class ReceiptManager {
     public void writeReceipt(List<Product> products, double totalPrice) {
         DateTimeFormatter formatter = DateTimeFormatter.ofPattern("yyyyMMdd-HHmmss");
         String timestamp = LocalDateTime.now().format(formatter);
-        LocalDateTime currentDateTime = LocalDateTime.now(); // Get current date and time
-        writeReceipt(products, totalPrice, currentDateTime); // Call the overloaded method with current date and time
+        LocalDateTime currentDateTime = LocalDateTime.now();
+        writeReceipt(products, totalPrice, currentDateTime);
     }
 
     public void writeReceipt(List<Product> products, double totalPrice, LocalDateTime scheduledDateTime) {
@@ -42,7 +42,7 @@ public class ReceiptManager {
             } else {
                 System.out.println("Receipt for scheduled order written to " + filename);
             }
-            bufwriter.flush(); // Flush the buffer to ensure content is written to the file
+            bufwriter.flush();
         } catch (IOException e) {
             System.err.println("Error writing receipt: " + e.getMessage());
         }

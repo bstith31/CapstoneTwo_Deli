@@ -58,11 +58,12 @@ public class UserInterface {
 
         while (!cancelOrder) {
             System.out.println("""
-                    1. Add a Sandwich
-                    2. Add a Drink
-                    3. Add Chips
-                    4. Checkout
-                    5. Cancel Order
+                    1. Add a Custom Sandwich
+                    2. Add a Signature Sandwich
+                    3. Add a Drink
+                    4. Add Chips
+                    5. Checkout
+                    6. Cancel Order
                     Please choose an option:
                     """);
 
@@ -73,15 +74,18 @@ public class UserInterface {
                     addProduct(new Sandwich("Custom Sandwich", 0.0));
                     break;
                 case 2:
-                    addProduct(new Drink("Custom Drink", 0.0));
+                    selectSignatureSandwich();
                     break;
                 case 3:
-                    addProduct(new Chips("Custom Chips", 0.0));
+                    addProduct(new Drink("Custom Drink", 0.0));
                     break;
                 case 4:
+                    addProduct(new Chips("Custom Chips", 0.0));
+                    break;
+                case 5:
                     checkout();
                     return;
-                case 5:
+                case 6:
                     System.out.println("Order cancelled.");
                     cancelOrder = true;
                     break;
@@ -100,6 +104,31 @@ public class UserInterface {
         System.out.println("Added: " + product);
         System.out.printf("Current total: $%.2f%n", totalPrice);
 
+    }
+
+    private void selectSignatureSandwich() {
+        System.out.println("""
+                Select a Signature Sandwich:
+                1. BLT
+                2. Philly Cheese Steak
+                3. Hobbs Turkey Sandwich
+                Please choose an option:
+                """);
+
+        int sandwichChoice = scanner.nextInt();
+        switch (sandwichChoice) {
+            case 1:
+                addProduct(CustomSandwich.createBLT());
+                break;
+            case 2:
+                addProduct(CustomSandwich.createPhillyCheeseSteak());
+                break;
+            case 3:
+                addProduct(CustomSandwich.createHobbsTurkeySandwich());
+            default:
+                System.out.println("Invalid choice, please try again.");
+                break;
+        }
     }
 
     private void checkout() {
@@ -153,11 +182,11 @@ public class UserInterface {
         }
         System.out.printf("Total Price: $%.2f%n", totalPrice);
 
-        // Check if scheduledDateTime is not null before calling writeReceipt
+
         if (scheduledDateTime != null) {
             receiptManager.writeReceipt(products, totalPrice, scheduledDateTime);
         } else {
-            receiptManager.writeReceipt(products, totalPrice); // Call the method without scheduledDateTime
+            receiptManager.writeReceipt(products, totalPrice);
         }
     }
 }
