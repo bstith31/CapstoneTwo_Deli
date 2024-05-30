@@ -9,11 +9,21 @@ public class ReceiptManager {
 
     private static final String RECEIPTS = "receipts/";
 
+    /*
+    The first of two writeReceipt methods that are used to write the receipt to the file.
+    This version of the method accepts the parameters of product from the List<Product> as well as the totalPrice.
+    When accepting these parameters, it uses LocalDateTime to save the receipt with given info to the current time.
+     */
     public void writeReceipt(List<Product> products, double totalPrice) {
         LocalDateTime currentDateTime = LocalDateTime.now();
         writeReceipt(products, totalPrice, currentDateTime);
     }
 
+    /*
+    The second of the writeReceipt methods, in this version the accepted parameters vary.
+    This method accepts a product and totalPrice like the first method, however, it also accepts a scheduledDateTime.
+    This overloaded method triggers when a user decides to schedule their order when prompted before actually ordering.
+     */
     public void writeReceipt(List<Product> products, double totalPrice, LocalDateTime scheduledDateTime) {
         DateTimeFormatter formatter = DateTimeFormatter.ofPattern("yyyyMMdd-HHmmss");
         String timestamp = scheduledDateTime.format(formatter);

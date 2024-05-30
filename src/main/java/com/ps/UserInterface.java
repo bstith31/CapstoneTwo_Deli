@@ -18,6 +18,11 @@ public class UserInterface {
     private LocalDateTime scheduledDateTime = null;
     private boolean adminMode = false; // Flag to track admin mode
 
+    /*
+    A helper method that allowed me to forgo wrapping the entire program in try and catch blocks.
+    Instead, I was able to use this to use this method wherever in place of scanner.nextInt.
+    This handled any InputMismatchExceptions when a letter input.
+     */
     private int getUserInput() {
         while (true) {
             try {
@@ -63,6 +68,8 @@ public class UserInterface {
         }
     }
 
+
+    //Allows scheduleOrder to run if a value of 1 is input
     private void scheduleOrderAtStart() {
         System.out.println("Would you like to schedule this order? (1 for yes, 2 for no): ");
         int scheduleChoice = getUserInput();
@@ -207,20 +214,6 @@ public class UserInterface {
         products.clear();
         totalPrice = 0.0;
         scheduledDateTime = null;
-    }
-
-    private void processOrder() {
-        System.out.println("Order Summary:");
-        for (Product product : products) {
-            System.out.println(product);
-        }
-        System.out.printf("Total Price: $%.2f%n", totalPrice);
-
-        if (scheduledDateTime != null) {
-            receiptManager.writeReceipt(products, totalPrice, scheduledDateTime);
-        } else {
-            receiptManager.writeReceipt(products, totalPrice);
-        }
     }
 
     private void enterAdminMode() {

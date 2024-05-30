@@ -87,7 +87,7 @@ public class Sandwich extends Product {
         for (int i = 0; i < breads.length; i++) {
             System.out.printf("%d. %s%n", i + 1, breads[i]);
         }
-        setBread(breads[getUserInput() - 1]);
+        setBread(breads[getUserInput(breads.length) - 1]);
 
         // Size options
         int[] sizes = {4, 8, 12};
@@ -95,7 +95,7 @@ public class Sandwich extends Product {
         for (int i = 0; i < sizes.length; i++) {
             System.out.printf("%d. %d inches%n", i + 1, sizes[i]);
         }
-        setSize(sizes[getUserInput() - 1]);
+        setSize(sizes[getUserInput(sizes.length) - 1]);
 
         // Meat options
         String[] possibleMeats = {"steak", "ham", "salami", "roast beef", "chicken", "bacon"};
@@ -132,7 +132,7 @@ public class Sandwich extends Product {
 
         // Toasted
         System.out.print("Would you like the sandwich toasted? (1 for yes, 2 for no): ");
-        setToasted(getUserInput() == 1);
+        setToasted(getUserInput(2) == 1);
 
         calculatePrice();
         displaySandwichArt();
@@ -142,7 +142,16 @@ public class Sandwich extends Product {
         String[] indices = input.split(",");
         String[] selectedItems = new String[indices.length];
         for (int i = 0; i < indices.length; i++) {
-            selectedItems[i] = options[Integer.parseInt(indices[i].trim()) - 1];
+            try {
+                int index = Integer.parseInt(indices[i].trim()) - 1;
+                if (index >= 0 && index < options.length) {
+                    selectedItems[i] = options[index];
+                } else {
+                    System.out.printf("Invalid selection: %d. Skipping.%n", index + 1);
+                }
+            } catch (NumberFormatException | ArrayIndexOutOfBoundsException e) {
+                System.out.printf("Invalid input: %s. Skipping.%n", indices[i]);
+            }
         }
         return selectedItems;
     }
@@ -179,10 +188,15 @@ public class Sandwich extends Product {
 
     }
 
-    private int getUserInput() {
+    private int getUserInput(int upperBound) {
         while (true) {
             try {
-                return scanner.nextInt();
+                int input = scanner.nextInt();
+                if (input >= 1 && input <= upperBound) {
+                    return input;
+                } else {
+                    System.out.printf("Invalid input. Please enter a number between 1 and %d.%n", upperBound);
+                }
             } catch (InputMismatchException e) {
                 System.out.println("Invalid input. Please enter a number.");
                 scanner.next();

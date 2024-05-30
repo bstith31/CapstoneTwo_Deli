@@ -22,14 +22,19 @@ public class Chips extends Product {
         for (int i = 0; i < types.length; i++) {
             System.out.printf("%d. %s%n", i + 1, types[i]);
         }
-        type = types[getUserInput() - 1];
+        type = types[getUserInput(4) - 1];
         price = 1.50;
     }
 
-    private int getUserInput() {
+    private int getUserInput(int upperBound) {
         while (true) {
             try {
-                return scanner.nextInt();
+                int input = scanner.nextInt();
+                if (input >= 1 && input <= upperBound) {
+                    return input;
+                } else {
+                    System.out.printf("Invalid input. Please enter a number between 1 and %d.%n", upperBound);
+                }
             } catch (InputMismatchException e) {
                 System.out.println("Invalid input. Please enter a number.");
                 scanner.next();

@@ -22,7 +22,7 @@ public class Drink extends Product {
         for (int i = 0; i < sizes.length; i++) {
             System.out.printf("%d. %s%n", i + 1, sizes[i]);
         }
-        size = sizes[getUserInput() - 1];
+        size = sizes[getUserInput(3) - 1];
 
         switch (size.toLowerCase()) {
             case "small":
@@ -39,17 +39,21 @@ public class Drink extends Product {
         }
     }
 
-    private int getUserInput() {
+    private int getUserInput(int upperBound) {
         while (true) {
             try {
-                return scanner.nextInt();
+                int input = scanner.nextInt();
+                if (input >= 1 && input <= upperBound) {
+                    return input;
+                } else {
+                    System.out.printf("Invalid input. Please enter a number between 1 and %d.%n", upperBound);
+                }
             } catch (InputMismatchException e) {
                 System.out.println("Invalid input. Please enter a number.");
                 scanner.next();
             }
         }
     }
-
     @Override
     public String toString() {
         return String.format("Drink - %s, Price: $%.2f", size, price);
