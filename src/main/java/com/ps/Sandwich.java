@@ -1,6 +1,5 @@
 package com.ps;
-// import java.util.HashMap;
-// import java.util.Map;
+
 import java.util.Arrays;
 import java.util.InputMismatchException;
 import java.util.Scanner;
@@ -103,8 +102,7 @@ public class Sandwich extends Product {
         for (int i = 0; i < possibleMeats.length; i++) {
             System.out.printf("%d. %s%n", i + 1, possibleMeats[i]);
         }
-        scanner.nextLine();
-        setMeats(getSelectedItems(scanner.nextLine(), possibleMeats));
+        setMeats(getSelectedItems(scanner.nextLine(), possibleMeats, 1, 3));
 
         // Cheese options
         String[] possibleCheeses = {"american", "provolone", "cheddar", "swiss"};
@@ -112,7 +110,7 @@ public class Sandwich extends Product {
         for (int i = 0; i < possibleCheeses.length; i++) {
             System.out.printf("%d. %s%n", i + 1, possibleCheeses[i]);
         }
-        setCheeses(getSelectedItems(scanner.nextLine(), possibleCheeses));
+        setCheeses(getSelectedItems(scanner.nextLine(), possibleCheeses, 0, possibleCheeses.length));
 
         // Other toppings
         String[] possibleToppings = {"lettuce", "tomato", "onion", "pickle", "olives"};
@@ -120,7 +118,7 @@ public class Sandwich extends Product {
         for (int i = 0; i < possibleToppings.length; i++) {
             System.out.printf("%d. %s%n", i + 1, possibleToppings[i]);
         }
-        setOtherToppings(getSelectedItems(scanner.nextLine(), possibleToppings));
+        setOtherToppings(getSelectedItems(scanner.nextLine(), possibleToppings, 0, possibleToppings.length));
 
         // Sauces
         String[] possibleSauces = {"mayo", "mustard", "ketchup", "ranch", "BBQ"};
@@ -128,7 +126,7 @@ public class Sandwich extends Product {
         for (int i = 0; i < possibleSauces.length; i++) {
             System.out.printf("%d. %s%n", i + 1, possibleSauces[i]);
         }
-        setSauces(getSelectedItems(scanner.nextLine(), possibleSauces));
+        setSauces(getSelectedItems(scanner.nextLine(), possibleSauces, 0, possibleSauces.length));
 
         // Toasted
         System.out.print("Would you like the sandwich toasted? (1 for yes, 2 for no): ");
@@ -138,8 +136,13 @@ public class Sandwich extends Product {
         displaySandwichArt();
     }
 
-    private String[] getSelectedItems(String input, String[] options) {
+    private String[] getSelectedItems(String input, String[] options, int minChoices, int maxChoices) {
         String[] indices = input.split(",");
+        if (indices.length < minChoices || indices.length > maxChoices) {
+            System.out.printf("Invalid number of selections. Please select between %d and %d items.%n", minChoices, maxChoices);
+            return null;
+        }
+
         String[] selectedItems = new String[indices.length];
         for (int i = 0; i < indices.length; i++) {
             try {
