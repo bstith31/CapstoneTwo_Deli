@@ -5,18 +5,7 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="57ca2c4a-3032-4339-bb69-194190f7de4d" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/receipts/20240529-155040.txt" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/receipts/20240529-155521.txt" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/20240528-120334.txt" beforeDir="false" afterPath="$PROJECT_DIR$/receipts/20240528-120334.txt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/20240528-143326.txt" beforeDir="false" afterPath="$PROJECT_DIR$/receipts/20240528-143326.txt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/20240528-144230.txt" beforeDir="false" afterPath="$PROJECT_DIR$/receipts/20240528-144230.txt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/20240528-144823.txt" beforeDir="false" afterPath="$PROJECT_DIR$/receipts/20240528-144823.txt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/20240528-155151.txt" beforeDir="false" afterPath="$PROJECT_DIR$/receipts/20240528-155151.txt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/20240528-155641.txt" beforeDir="false" afterPath="$PROJECT_DIR$/receipts/20240528-155641.txt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/20240530-113000.txt" beforeDir="false" afterPath="$PROJECT_DIR$/receipts/20240530-113000.txt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/20240530-120000.txt" beforeDir="false" afterPath="$PROJECT_DIR$/receipts/20240530-120000.txt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/ps/ReceiptManager.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/ps/ReceiptManager.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/com/ps/UserInterface.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/ps/UserInterface.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -54,6 +43,11 @@
     &quot;kotlin-language-version-configured&quot;: &quot;true&quot;
   }
 }</component>
+  <component name="RecentsManager">
+    <key name="MoveFile.RECENT_KEYS">
+      <recent name="C:\Users\bfs43\LearnToCode\capstones\CapstoneTwo_Deli\receipts" />
+    </key>
+  </component>
   <component name="RunManager">
     <configuration name="Main" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
       <option name="MAIN_CLASS_NAME" value="com.ps.Main" />

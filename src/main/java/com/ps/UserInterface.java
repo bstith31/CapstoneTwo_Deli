@@ -4,6 +4,7 @@ import java.time.LocalDateTime;
 import java.time.format.DateTimeFormatter;
 import java.time.format.DateTimeParseException;
 import java.util.ArrayList;
+import java.util.InputMismatchException;
 import java.util.List;
 import java.util.Scanner;
 
@@ -17,6 +18,17 @@ public class UserInterface {
     private LocalDateTime scheduledDateTime = null;
     private boolean adminMode = false; // Flag to track admin mode
 
+    private int getUserInput() {
+        while (true) {
+            try {
+                return scanner.nextInt();
+            } catch (InputMismatchException e) {
+                System.out.println("Invalid input. Please enter a number.");
+                scanner.next();
+            }
+        }
+    }
+
     public void startMenu() {
 
         boolean exitApplication = false;
@@ -29,7 +41,7 @@ public class UserInterface {
                     Please choose an option
                     """);
 
-            int userChoice = scanner.nextInt();
+            int userChoice = getUserInput();
 
             switch (userChoice) {
                 case 1:
@@ -53,7 +65,7 @@ public class UserInterface {
 
     private void scheduleOrderAtStart() {
         System.out.println("Would you like to schedule this order? (1 for yes, 2 for no): ");
-        int scheduleChoice = scanner.nextInt();
+        int scheduleChoice = getUserInput();
         if (scheduleChoice == 1) {
             scheduleOrder();
         }
@@ -82,7 +94,7 @@ public class UserInterface {
                 """);
             }
 
-            int userChoice = scanner.nextInt();
+            int userChoice = getUserInput();
 
             if (!adminMode && (userChoice < 1 || userChoice > 6)) {
                 System.out.println("Invalid choice, please try again.");
@@ -133,7 +145,7 @@ public class UserInterface {
                 Please choose an option:
                 """);
 
-        int sandwichChoice = scanner.nextInt();
+        int sandwichChoice = getUserInput();
         switch (sandwichChoice) {
             case 1:
                 addProduct(CustomSandwich.createBLT());
@@ -232,7 +244,7 @@ public class UserInterface {
                     2. Exit Admin Mode
                     Please choose an option:
                     """);
-            int adminChoice = scanner.nextInt();
+            int adminChoice = getUserInput();
             switch (adminChoice) {
                 case 1:
                     if (scheduledOrders.isEmpty()) {
