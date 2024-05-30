@@ -188,7 +188,6 @@ public class Sandwich extends Product {
     }
 
     private void displaySandwichArt() {
-
     }
 
     private int getUserInput(int upperBound) {

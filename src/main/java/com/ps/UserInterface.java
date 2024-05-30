@@ -8,7 +8,7 @@ import java.util.InputMismatchException;
 import java.util.List;
 import java.util.Scanner;
 
-public class UserInterface {
+public class UserInterface implements Admin {
 
     private ArrayList<Product> products = new ArrayList<>();
     private double totalPrice = 0.0;
@@ -40,6 +40,7 @@ public class UserInterface {
 
         while (!exitApplication) {
             System.out.println("""
+                    
                     1. New Order
                     2. Admin Mode
                     3. Exit
@@ -216,7 +217,7 @@ public class UserInterface {
         scheduledDateTime = null;
     }
 
-    private void enterAdminMode() {
+    public void enterAdminMode() {
         System.out.println("Enter Admin Mode Password: "); // Example: "adminpassword"
         String password = scanner.next();
         if (password.equals("adminpassword")) {
@@ -228,7 +229,7 @@ public class UserInterface {
         }
     }
 
-    private void adminMenu() {
+    public void adminMenu() {
         boolean exitAdminMenu = false;
         while (!exitAdminMenu) {
             System.out.println("""
@@ -257,7 +258,7 @@ public class UserInterface {
         }
     }
 
-    private void exitAdminMode() {
+    public void exitAdminMode() {
         adminMode = false;
         System.out.println("Exited Admin Mode.");
     }
