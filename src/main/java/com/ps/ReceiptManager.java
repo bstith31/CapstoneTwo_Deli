@@ -1,8 +1,6 @@
 package com.ps;
 
-import java.io.BufferedWriter;
-import java.io.FileWriter;
-import java.io.IOException;
+import java.io.*;
 import java.time.LocalDateTime;
 import java.time.format.DateTimeFormatter;
 import java.util.List;
@@ -49,8 +47,24 @@ public class ReceiptManager {
     }
 
     public void printAllReceipts(List<Order> orders) {
-        for (Order order : orders) {
-            System.out.println(order);
+        File directory = new File(RECEIPTS);
+
+        File[] files = directory.listFiles((dir, name) -> name.endsWith(".txt"));
+        if (files == null || files.length == 0) {
+            System.out.println("No receipts found.");
+            return;
+        }
+
+        for (File file : files) {
+            try (BufferedReader bufreader = new BufferedReader(new FileReader(file))) {
+                String line;
+                while ((line = bufreader.readLine()) != null) {
+                    System.out.println(line);
+                }
+                System.out.println();
+            } catch (IOException e) {
+                System.err.println("Error reading receipt: " + file.getName() + " - " + e.getMessage());
+            }
         }
     }
 }

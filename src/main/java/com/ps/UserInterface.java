@@ -185,7 +185,7 @@ public class UserInterface {
 
     private void scheduleOrder() {
         System.out.println("Enter the date and time for the order (YYYY-MM-DD HH:mm): ");
-        scanner.nextLine(); // consume newline
+        scanner.nextLine();
         String dateTimeString = scanner.nextLine();
 
         DateTimeFormatter formatter = DateTimeFormatter.ofPattern("uuuu-MM-dd HH:mm");

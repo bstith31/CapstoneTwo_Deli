@@ -1,12 +1,15 @@
 package com.ps;
 
+import java.util.InputMismatchException;
 import java.util.Scanner;
 
 public class Drink extends Product {
 
     private String size;
+    private Scanner scanner;
     public Drink(String name, double price) {
         super(name, price);
+        this.scanner = new Scanner(System.in);
     }
 
     @Override
@@ -19,7 +22,7 @@ public class Drink extends Product {
         for (int i = 0; i < sizes.length; i++) {
             System.out.printf("%d. %s%n", i + 1, sizes[i]);
         }
-        size = sizes[scanner.nextInt() - 1];
+        size = sizes[getUserInput() - 1];
 
         switch (size.toLowerCase()) {
             case "small":
@@ -33,6 +36,17 @@ public class Drink extends Product {
                 break;
             default:
                 throw new IllegalArgumentException("Invalid drink size");
+        }
+    }
+
+    private int getUserInput() {
+        while (true) {
+            try {
+                return scanner.nextInt();
+            } catch (InputMismatchException e) {
+                System.out.println("Invalid input. Please enter a number.");
+                scanner.next();
+            }
         }
     }
 

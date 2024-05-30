@@ -2,6 +2,7 @@ package com.ps;
 // import java.util.HashMap;
 // import java.util.Map;
 import java.util.Arrays;
+import java.util.InputMismatchException;
 import java.util.Scanner;
 
 public class Sandwich extends Product {
@@ -13,9 +14,11 @@ public class Sandwich extends Product {
     private String[] otherToppings;
     private String[] sauces;
     private boolean toasted;
+    private Scanner scanner;
 
     public Sandwich(String name, double price) {
         super(name, price);
+        this.scanner = new Scanner(System.in);
     }
 
     public String getBread() {
@@ -84,7 +87,7 @@ public class Sandwich extends Product {
         for (int i = 0; i < breads.length; i++) {
             System.out.printf("%d. %s%n", i + 1, breads[i]);
         }
-        setBread(breads[scanner.nextInt() - 1]);
+        setBread(breads[getUserInput() - 1]);
 
         // Size options
         int[] sizes = {4, 8, 12};
@@ -92,7 +95,7 @@ public class Sandwich extends Product {
         for (int i = 0; i < sizes.length; i++) {
             System.out.printf("%d. %d inches%n", i + 1, sizes[i]);
         }
-        setSize(sizes[scanner.nextInt() - 1]);
+        setSize(sizes[getUserInput() - 1]);
 
         // Meat options
         String[] possibleMeats = {"steak", "ham", "salami", "roast beef", "chicken", "bacon"};
@@ -100,7 +103,7 @@ public class Sandwich extends Product {
         for (int i = 0; i < possibleMeats.length; i++) {
             System.out.printf("%d. %s%n", i + 1, possibleMeats[i]);
         }
-        scanner.nextLine(); // Consume newline left-over
+        scanner.nextLine();
         setMeats(getSelectedItems(scanner.nextLine(), possibleMeats));
 
         // Cheese options
@@ -129,7 +132,7 @@ public class Sandwich extends Product {
 
         // Toasted
         System.out.print("Would you like the sandwich toasted? (1 for yes, 2 for no): ");
-        setToasted(scanner.nextInt() == 1);
+        setToasted(getUserInput() == 1);
 
         calculatePrice();
         displaySandwichArt();
@@ -174,6 +177,17 @@ public class Sandwich extends Product {
 
     private void displaySandwichArt() {
 
+    }
+
+    private int getUserInput() {
+        while (true) {
+            try {
+                return scanner.nextInt();
+            } catch (InputMismatchException e) {
+                System.out.println("Invalid input. Please enter a number.");
+                scanner.next();
+            }
+        }
     }
 
 
