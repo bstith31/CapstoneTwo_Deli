@@ -1,10 +1,8 @@
 Scheduled Order Receipt
 ========================
-Scheduled Date and Time: 2024-05-30 08:36
+Scheduled Date and Time: 2024-05-30 22:40
 
+Sandwich - 8 inches, white, Meats: steak, Cheeses: american, Toppings: peppers, Sauces: mayo, Toasted: yes, Price: $10.50
 Sandwich - 8 inches, white, Meats: bacon, Cheeses: cheddar, Toppings: lettuce, tomato, Sauces: ranch, Toasted: yes, Price: $10.50
-Drink - small, Price: $2.00
-Drink - medium, Price: $2.50
-Chips - regular, Price: $1.50
 --------------
-Total Price: $16.50
+Total Price: $21.00

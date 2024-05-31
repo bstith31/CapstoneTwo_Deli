@@ -1,0 +1,9 @@
+Scheduled Order Receipt
+========================
+Scheduled Date and Time: 2024-05-30 22:40
+
+Sandwich - 4 inches, white, Meats: steak, Cheeses: american, Toppings: lettuce, Sauces: mayo, Toasted: yes, Price: $7.25
+Sandwich - 8 inches, wheat, Meats: ham, Cheeses: provolone, Toppings: tomato, Sauces: mustard, Toasted: no, Price: $10.50
+Sandwich - 8 inches, white, Meats: bacon, Cheeses: cheddar, Toppings: lettuce, tomato, Sauces: ranch, Toasted: yes, Price: $10.50
+--------------
+Total Price: $28.25

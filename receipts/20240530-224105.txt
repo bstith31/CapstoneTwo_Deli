@@ -1,0 +1,8 @@
+Scheduled Order Receipt
+========================
+Scheduled Date and Time: 2024-05-30 22:41
+
+Drink - large, Price: $3.00
+Chips - salt & vinegar, Price: $1.50
+--------------
+Total Price: $4.50

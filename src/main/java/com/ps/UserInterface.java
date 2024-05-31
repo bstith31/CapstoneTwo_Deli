@@ -191,6 +191,9 @@ public class UserInterface implements Admin {
         resetOrder();
     }
 
+    /*
+
+     */
     private void scheduleOrder() {
         System.out.println("Enter the date and time for the order (YYYY-MM-DD HH:mm): ");
         scanner.nextLine();
@@ -217,6 +220,10 @@ public class UserInterface implements Admin {
         scheduledDateTime = null;
     }
 
+    /*
+
+
+     */
     public void enterAdminMode() {
         System.out.println("Enter Admin Mode Password: "); // Example: "adminpassword"
         String password = scanner.next();
@@ -241,11 +248,7 @@ public class UserInterface implements Admin {
             int adminChoice = getUserInput();
             switch (adminChoice) {
                 case 1:
-                    if (scheduledOrders.isEmpty()) {
-                        System.out.println("No receipts currently.");
-                    } else {
-                        receiptManager.printAllReceipts(scheduledOrders);
-                    }
+                    receiptManager.printAllReceipts();
                     break;
                 case 2:
                     exitAdminMode();

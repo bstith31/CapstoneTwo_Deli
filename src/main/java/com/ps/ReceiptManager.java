@@ -1,6 +1,9 @@
 package com.ps;
 
 import java.io.*;
+import java.nio.file.Files;
+import java.nio.file.Path;
+import java.nio.file.Paths;
 import java.time.LocalDateTime;
 import java.time.format.DateTimeFormatter;
 import java.util.List;
@@ -56,25 +59,30 @@ public class ReceiptManager {
         }
     }
 
-    public void printAllReceipts(List<Order> orders) {
-        File directory = new File(RECEIPTS);
-
-        File[] files = directory.listFiles((dir, name) -> name.endsWith(".txt"));
-        if (files == null || files.length == 0) {
-            System.out.println("No receipts found.");
-            return;
-        }
-
-        for (File file : files) {
-            try (BufferedReader bufreader = new BufferedReader(new FileReader(file))) {
-                String line;
-                while ((line = bufreader.readLine()) != null) {
-                    System.out.println(line);
-                }
-                System.out.println();
-            } catch (IOException e) {
-                System.err.println("Error reading receipt: " + file.getName() + " - " + e.getMessage());
-            }
+    /*
+    Method for admin access, allowing admins to print all receipts within the file for viewing. This is useful to see
+    all transactions and would help in keeping track of transactions within given periods of times such as the feature
+    included in capstone 1.
+     */
+    public void printAllReceipts() {
+        Path directory = Paths.get(RECEIPTS);
+        try {
+            Files.walk(directory)
+                    .filter(path -> path.toString().endsWith(".txt"))
+                    .forEach(path -> {
+                        try (BufferedReader bufreader = new BufferedReader(new FileReader(path.toFile()))) {
+                            String line;
+                            while ((line = bufreader.readLine()) != null) {
+                                System.out.println(line);
+                            }
+                            System.out.println();
+                        } catch (IOException e) {
+                            System.err.println("Error reading receipt: " + path.getFileName() + " - " + e.getMessage());
+                        }
+                    });
+        } catch (IOException e) {
+            System.err.println("Error walking directory: " + e.getMessage());
         }
     }
 }
+

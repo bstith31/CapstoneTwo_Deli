@@ -1,5 +1,0 @@
-Order Receipt
-==============
-Sandwich - 12 inches, white, Meats: steak, ham, Cheeses: american, Toppings: lettuce, tomato, onion, Sauces: mayo, Toasted: yes, Price: $16.75
---------------
-Total Price: $16.75
