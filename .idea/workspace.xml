@@ -6,21 +6,6 @@
   <component name="ChangeListManager">
     <list default="true" id="57ca2c4a-3032-4339-bb69-194190f7de4d" name="Changes" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/receipts/20240528-120334.txt" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/receipts/20240528-143326.txt" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/receipts/20240528-144230.txt" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/receipts/20240528-144823.txt" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/receipts/20240528-155151.txt" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/receipts/20240528-155641.txt" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/receipts/20240529-155040.txt" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/receipts/20240529-155521.txt" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/receipts/20240529-160140.txt" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/receipts/20240530-083623.txt" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/receipts/20240530-113000.txt" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/receipts/20240530-120000.txt" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/receipts/20240530-152757.txt" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/ps/CustomSandwich.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/ps/CustomSandwich.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/ps/ReceiptManager.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/ps/ReceiptManager.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/com/ps/UserInterface.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/ps/UserInterface.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -38,6 +23,9 @@
   </component>
   <component name="Git.Settings">
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
+  </component>
+  <component name="MarkdownSettingsMigration">
+    <option name="stateVersion" value="1" />
   </component>
   <component name="ProjectColorInfo">{
   &quot;associatedIndex&quot;: 3

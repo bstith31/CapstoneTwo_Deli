@@ -41,6 +41,8 @@ public class UserInterface implements Admin {
         while (!exitApplication) {
             System.out.println("""
                     
+                    ------------------------Welcome to DELI-cious Deli-----------------------------
+                    
                     1. New Order
                     2. Admin Mode
                     3. Exit
